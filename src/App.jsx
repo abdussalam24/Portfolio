@@ -13,13 +13,14 @@ function App() {
 
   useEffect(() => {
     // Fetch GitHub Repos once
-    fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`)
+    fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=10`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
-          // Filter out 'aashirproject' and 'cipher'
-          const filteredProjects = data.filter(repo => repo.name !== 'aashirproject' && repo.name !== 'cipher')
-          setProjects(filteredProjects)
+          // Filter out unwanted repositories
+          const unwanted = ['aashirproject', 'cipher', 'My-Portfolio', 'HR-JD-system', 'HR-CV-JD-Match-Assistant']
+          const filteredProjects = data.filter(repo => !unwanted.includes(repo.name))
+          setProjects(filteredProjects.slice(0, 6)) // Still show max 6 projects
         }
         setLoading(false)
       })
@@ -211,7 +212,8 @@ function App() {
 
                   const projectDescriptions = {
                     'Auto-Workshop': "A full-stack project built with HTML, CSS, JS, SQL, and PHP. Designed for seamless appointment booking and effectively addressing customer queries via email and phone.",
-                    'kitchen': "A web app built with the MERN stack that delivers fast performance and seamless user experience. An AI chatbot provides instant support, answers queries, and improves customer engagement 24/7."
+                    'kitchen': "A web app built with the MERN stack that delivers fast performance and seamless user experience. An AI chatbot provides instant support, answers queries, and improves customer engagement 24/7.",
+                    'EV-Population-Analytics': "A data-driven application that visualizes and analyzes electric vehicle population distributions using Python, Pandas, and modern web visualization libraries."
                   }
 
                   const projectTechStacks = {
