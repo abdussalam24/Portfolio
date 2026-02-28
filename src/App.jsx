@@ -18,9 +18,16 @@ function App() {
       .then(data => {
         if (Array.isArray(data)) {
           // Filter out unwanted repositories
-          const unwanted = ['aashirproject', 'cipher', 'My-Portfolio', 'HR-JD-system', 'HR-CV-JD-Match-Assistant']
-          const filteredProjects = data.filter(repo => !unwanted.includes(repo.name))
-          setProjects(filteredProjects.slice(0, 6)) // Still show max 6 projects
+          const unwanted = ['aashirproject', 'cipher', 'My-Portfolio', 'HR-JD-system', 'workshop', 'Auto-Workshop-Website']
+          let filtered = data.filter(repo => !unwanted.includes(repo.name))
+
+          // Move HR project to the end if it exists
+          const hrProject = filtered.find(p => p.name === 'HR-CV-JD-Match-Assistant')
+          if (hrProject) {
+            filtered = [...filtered.filter(p => p.name !== 'HR-CV-JD-Match-Assistant'), hrProject]
+          }
+
+          setProjects(filtered.slice(0, 6)) // Still show max 6 projects
         }
         setLoading(false)
       })
@@ -198,7 +205,7 @@ function App() {
                     'peer-to-peer-learning-': 'https://peer-to-peer-learning-orcin.vercel.app/',
                     'EV-Population-Analytics': 'https://ev-population-analytics.vercel.app/',
                     'HR-CV-JD-Match-Assistant': 'https://your-hr-assistant-link.vercel.app',
-                    'Auto-Workshop': 'https://auto-workshop-r3iw-git-main-abdussalam24s-projects.vercel.app/',
+                    'Auto-Workshop': 'https://auto-workshop-r3iw.vercel.app/',
                     'kitchen': 'https://kitchen-two-iota.vercel.app/'
                   }
 
@@ -213,7 +220,8 @@ function App() {
                   const projectDescriptions = {
                     'Auto-Workshop': "A full-stack project built with HTML, CSS, JS, SQL, and PHP. Designed for seamless appointment booking and effectively addressing customer queries via email and phone.",
                     'kitchen': "A web app built with the MERN stack that delivers fast performance and seamless user experience. An AI chatbot provides instant support, answers queries, and improves customer engagement 24/7.",
-                    'EV-Population-Analytics': "A data-driven application that visualizes and analyzes electric vehicle population distributions using Python, Pandas, and modern web visualization libraries."
+                    'EV-Population-Analytics': "A data-driven application that visualizes and analyzes electric vehicle population distributions using Python, Pandas, and modern web visualization libraries.",
+                    'HR-CV-JD-Match-Assistant': "An AI-powered tool that parses resumes (CVs) and Job Descriptions (JDs) to provide a matching percentage and detailed analysis, helping HR teams streamline the recruitment process."
                   }
 
                   const projectTechStacks = {
