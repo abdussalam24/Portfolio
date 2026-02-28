@@ -108,17 +108,17 @@ function App() {
         <section id="home" className="hero container">
           <div className="hero-content">
             <span className="hero-greeting">Hi There! 👋</span>
-            <h1 className="hero-title" style={{ fontSize: '4.5rem', marginBottom: '1.5rem' }}>
+            <h1 className="hero-title">
               I'M <span className="text-gradient">ABDUSSALAM</span>
             </h1>
-            <h2 style={{ fontSize: '2.5rem', minHeight: '1.2em' }}>
+            <h2 className="hero-subtitle">
               A <span className="text-gradient typing-cursor">{displayText}</span>
             </h2>
-            <p className="hero-description" style={{ fontSize: '1.2rem', marginTop: '2rem', maxWidth: '600px', color: 'var(--text-secondary)' }}>
+            <p className="hero-description">
               I am a passionate Full Stack Developer with 3+ years of experience in building
               high-quality web applications. I love turning complex problems into simple, beautiful, and intuitive designs.
             </p>
-            <div className="hero-btns" style={{ marginTop: '3rem' }}>
+            <div className="hero-btns">
               <a href="#projects" className="btn-primary">View My Work</a>
               <a href="/resume.pdf" download="Muhammad_Abdussalam_Resume.pdf" className="btn-secondary">Resume</a>
             </div>
