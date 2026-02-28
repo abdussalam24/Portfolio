@@ -18,7 +18,7 @@ function App() {
       .then(data => {
         if (Array.isArray(data)) {
           // Filter out unwanted repositories
-          const unwanted = ['aashirproject', 'cipher', 'My-Portfolio', 'HR-JD-system', 'workshop', 'Auto-Workshop-Website']
+          const unwanted = ['aashirproject', 'cipher', 'My-Portfolio', 'Portfolio', 'HR-JD-system', 'workshop', 'Auto-Workshop-Website']
           let filtered = data.filter(repo => !unwanted.includes(repo.name))
 
           // Move HR project to the end if it exists
